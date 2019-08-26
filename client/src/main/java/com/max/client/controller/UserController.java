@@ -16,6 +16,9 @@ import com.max.core.result.ResultGenerator;
 import com.max.core.utils.RandomName;
 import com.max.event.login.LoginEvent;
 import com.max.event.signin.SigninEvent;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -41,6 +44,7 @@ public class UserController {
 
 
     /*账号密码登录*/
+    @ApiOperation(value = "/login", tags = {"账号密码登录"})
     @PostMapping("/login")
     public Result login(@RequestHeader(required = false) String token, @Validated LoginUserRequest login, String code) {
         RedisResult<UserDto> userInRedis = redisService.getResult(RedisKeyHelper.TOKEN_ONLINE + token, UserDto.class);
@@ -70,6 +74,7 @@ public class UserController {
     }
 
     /*手机号验证码登录*/
+    @ApiOperation(value = "/phone/login", tags = {"手机号验证码登录"})
     @PostMapping("/phone/login")
     public Result loginPhone(@RequestHeader(required = false) String token, @Validated LoginUserRequest login, String code) {
         RedisResult<UserDto> userInRedis = redisService.getResult(RedisKeyHelper.TOKEN_ONLINE + token, UserDto.class);
@@ -92,7 +97,7 @@ public class UserController {
         loginEvent.handle(userInDb);
         return ResultGenerator.genSuccessResult(UserResponse.getResponse(userInDb));
     }
-
+    @ApiOperation(value = "/heart", tags = {"心跳检测"})
     @PostMapping("/heart")
     public Result heart(@RequestHeader(required = false) String token) throws ServiceException {
         //当前
@@ -110,7 +115,7 @@ public class UserController {
         }
 
     }
-
+    @ApiOperation(value = "/signin", tags = {"注册"})
     @PostMapping("/signin")
     public Result signin(SigninUserRequest signinUserRequest, String code) throws ServiceException {
         String signinCodeInRedis = redisService.getResult(RedisKeyHelper.USER_SIGNIN_CODE + signinUserRequest.getName(), String.class).getResult();

@@ -14,6 +14,7 @@ import com.max.core.result.ResultCode;
 import com.max.core.result.ResultGenerator;
 import com.max.money.dto.WalletLogRequest;
 import com.max.money.service.WalletLogService;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,7 @@ public class WalletController {
     private RedisService redisService;
 
     /*绑定银行卡*/
+    @ApiOperation(value = "/band", tags = {"绑定银行卡"})
     @PostMapping("/band")
     public Result band(@RequestHeader String token, BankDto bank) {
         //新建支付密码
@@ -51,6 +53,7 @@ public class WalletController {
     }
 
     /*我的钱包*/
+    @ApiOperation(value = "/wallet", tags = {"我的钱包：归并"})
     @PostMapping("/wallet")
     public Result wallet(@RequestHeader String token) {
         //查询各个游戏账户余额，并归集到钱包，所有都成功
@@ -60,6 +63,7 @@ public class WalletController {
     }
 
     /*我的余额*/
+    @ApiOperation(value = "/money", tags = {"我的余额：不归并"})
     @PostMapping("/money")
     public Result money(@RequestHeader String token) {
         RedisResult<UserDto> loginedUser = redisService.getResult(token, UserDto.class);
@@ -69,6 +73,7 @@ public class WalletController {
     }
 
     /*我的资金明细*/
+    @ApiOperation(value = "/moneyhistory", tags = {"我的资金明细"})
     @PostMapping("/moneyhistory")
     public Result moneyhistory(WalletLogRequest walletLogRequest) {
         //查询钱包增减日志

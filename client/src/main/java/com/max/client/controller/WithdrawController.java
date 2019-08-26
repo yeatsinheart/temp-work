@@ -14,6 +14,7 @@ import com.max.money.dto.WalletSeriesDto;
 import com.max.money.dto.WithdrawOrderDto;
 import com.max.money.service.WalletSeriesService;
 import com.max.money.service.WithdrawOrderService;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,7 @@ public class WithdrawController {
     private WithdrawLimitService withdrawLimitService;
 
     /*提现*/
+    @ApiOperation(value = "/withdraw", tags = {"提现"})
     @PostMapping("/withdraw")
     public Result withdraw(@RequestHeader String token, WithdrawOrderDto withdrawOrder) {
         RedisResult<UserDto> loginedUser = redisService.getResult(token, UserDto.class);
@@ -64,15 +66,17 @@ public class WithdrawController {
         }
         return ResultGenerator.genFailResult(ResultCode.WITHDRAW_LIMIT);
     }
-        /*提现 约束条件*/
-        @PostMapping("/limit")
-        public Result limit (@RequestHeader String token){
-            RedisResult<UserDto> loginedUser = redisService.getResult(token, UserDto.class);
-            UserDto user = loginedUser.getResult();
-            if (null == user) {
-                return ResultGenerator.genFailResult(ResultCode.TOEKNUNVALIBLE.getCode(), ResultCode.TOEKNUNVALIBLE.getMessage());
-            }
-            UserWithdrawLimitDto limit = withdrawLimitService.getLimit(user);
-            return ResultGenerator.genSuccessResult(limit);
+
+    /*提现 约束条件*/
+    @ApiOperation(value = "/limit", tags = {"提现 约束条件"})
+    @PostMapping("/limit")
+    public Result limit(@RequestHeader String token) {
+        RedisResult<UserDto> loginedUser = redisService.getResult(token, UserDto.class);
+        UserDto user = loginedUser.getResult();
+        if (null == user) {
+            return ResultGenerator.genFailResult(ResultCode.TOEKNUNVALIBLE.getCode(), ResultCode.TOEKNUNVALIBLE.getMessage());
         }
+        UserWithdrawLimitDto limit = withdrawLimitService.getLimit(user);
+        return ResultGenerator.genSuccessResult(limit);
     }
+}
