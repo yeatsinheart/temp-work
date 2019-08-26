@@ -1,0 +1,435 @@
+CREATE TABLE `activity` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL COMMENT '活动标题',
+  `start_time` timestamp NULL DEFAULT NULL COMMENT '活动开启时间',
+  `end_time` timestamp NULL DEFAULT NULL COMMENT '活动结束时间',
+  `content` varchar(45) DEFAULT NULL,
+  `content_type` int(11) DEFAULT NULL COMMENT '内容类型 0文本 1跳转链接',
+  `time_type` varchar(45) DEFAULT NULL COMMENT '0 有限周期内 1有开始时间没有结束时间 2没有开始时间有结束时间 3永久',
+  `create_time` varchar(45) DEFAULT NULL COMMENT '创建时间',
+  `code` varchar(45) DEFAULT NULL COMMENT '神秘代码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动';
+
+CREATE TABLE `activity_award` (
+  `id` int(11) NOT NULL,
+  `activity_id` int(11) DEFAULT NULL COMMENT '关联活动Id',
+  `award` varchar(45) DEFAULT NULL COMMENT '奖励内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='活动奖励配置';
+
+CREATE TABLE `activity_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `activity_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `app` (
+  `id` int(11) NOT NULL COMMENT 'ID',
+  `name` varchar(45) DEFAULT NULL COMMENT '环境名称',
+  `code` varchar(45) DEFAULT NULL COMMENT '代码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='环境表';
+
+CREATE TABLE `app_maintain` (
+  `id` int(11) NOT NULL,
+  `start_time` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL,
+  `app_id` int(11) DEFAULT NULL COMMENT '维护环境ID',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='各端环境维护。每端处与维护中的时间';
+
+CREATE TABLE `bank` (
+  `id` int(11) NOT NULL,
+  `bank` varchar(45) DEFAULT NULL COMMENT '银行名称',
+  `ico` varchar(45) DEFAULT NULL COMMENT '银行图标',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支持的银行';
+
+CREATE TABLE `game` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏';
+
+CREATE TABLE `game_channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_id` varchar(45) DEFAULT NULL,
+  `merchant_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏渠道';
+
+CREATE TABLE `game_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏项目';
+
+CREATE TABLE `game_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `game_merchant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `merchant_code` varchar(45) DEFAULT NULL,
+  `public_key` varchar(45) DEFAULT NULL,
+  `private_key` varchar(45) DEFAULT NULL,
+  `gate` varchar(45) DEFAULT NULL COMMENT '网关',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏商户';
+
+CREATE TABLE `game_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `game_service` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `service` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏功能定义';
+
+CREATE TABLE `game_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `order` varchar(45) DEFAULT NULL,
+  `deleted` int(11) DEFAULT '0' COMMENT '是否删除 1已删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏分类';
+
+CREATE TABLE `game_view` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_id` varchar(45) DEFAULT NULL,
+  `ico` varchar(45) DEFAULT NULL,
+  `game_type_id` varchar(45) DEFAULT NULL,
+  `start_time` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '是否维护',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='游戏视图';
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL COMMENT '标题',
+  `content` varchar(45) DEFAULT NULL COMMENT '内容',
+  `content_type` int(11) DEFAULT '0' COMMENT '内容类型 0 普通文本',
+  `type` int(11) DEFAULT NULL COMMENT '消息类型 0 公告 1 消息',
+  `receive_user_id` int(11) DEFAULT NULL COMMENT '接收用户ID',
+  `readed` int(11) DEFAULT NULL COMMENT '是否已读',
+  `jump` varchar(45) DEFAULT NULL COMMENT '跳转内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统消息表';
+
+CREATE TABLE `message_merchant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='供应商配置';
+
+CREATE TABLE `message_channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='供应商服务';
+
+CREATE TABLE `message_temple` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar(45) DEFAULT NULL COMMENT '模板内容',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='消息模板';
+
+CREATE TABLE `message_way` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='消息发送方式';
+
+CREATE TABLE `notice` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `status` varchar(45) DEFAULT NULL COMMENT '是否显示',
+  `title` varchar(45) DEFAULT NULL,
+  `content` varchar(45) DEFAULT NULL COMMENT '内容',
+  `content_type` varchar(45) DEFAULT NULL COMMENT '内容格式 0文本 1图片',
+  `jump` varchar(45) DEFAULT NULL COMMENT '跳转内容',
+  `jump_type` varchar(45) DEFAULT NULL COMMENT '跳转类型 0 不跳转 1跳转到内容',
+  `type` varchar(45) DEFAULT NULL COMMENT '1公告 2轮播图 3弹窗',
+  `start_time` varchar(45) DEFAULT NULL,
+  `end_time` varchar(45) DEFAULT NULL,
+  `deleted` varchar(45) DEFAULT NULL COMMENT '是否删除',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统公开信息';
+
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '支付方式ID',
+  `name` varchar(45) DEFAULT NULL COMMENT '支付方式',
+  `status` int(11) DEFAULT '0' COMMENT '开启状态 0开启 1关闭',
+  `code` varchar(45) NOT NULL COMMENT '支付方式代码',
+  `order` int(11) DEFAULT '0' COMMENT '展示顺序 值大排前',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付方式';
+
+CREATE TABLE `payment_bank_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '银行卡使用记录',
+  `user_id` varchar(45) DEFAULT NULL,
+  `bank` varchar(45) DEFAULT NULL,
+  `card` varchar(45) DEFAULT NULL COMMENT '银行卡账号',
+  `name` varchar(45) DEFAULT NULL COMMENT '持卡人姓名',
+  `create_time` varchar(45) DEFAULT NULL COMMENT '绑定时间',
+  `ip` varchar(45) DEFAULT NULL COMMENT '绑定IP',
+  PRIMARY KEY (`id`),
+  KEY `unique_bank_card` (`bank`,`card`,`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='充值银行卡使用记录';
+
+CREATE TABLE `payment_channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '渠道ID',
+  `payment_id` int(11) DEFAULT NULL COMMENT '支付方式ID',
+  `merchant_id` int(11) DEFAULT NULL COMMENT '商户ID',
+  `name` varchar(45) DEFAULT NULL COMMENT '通道名称',
+  `order` int(11) DEFAULT NULL COMMENT '排序',
+  `min` bigint(20) DEFAULT NULL COMMENT '最小充值金额',
+  `max` bigint(20) DEFAULT NULL COMMENT '最大充值金额',
+  `pay_url` varchar(45) DEFAULT NULL COMMENT '支付地址',
+  `result_url` varchar(45) DEFAULT NULL COMMENT '结果跳转地址',
+  `notify_url` varchar(45) DEFAULT NULL COMMENT '通知地址',
+  `daily_limit` bigint(20) DEFAULT NULL COMMENT '每日收款上限',
+  `status` int(11) DEFAULT NULL COMMENT '状态 0 开启 1关闭',
+  `need_bank` int(11) DEFAULT '0' COMMENT '是否需要银行卡信息 0不需要 1需要',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付方式关联的支付渠道设置';
+
+CREATE TABLE `payment_merchant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL COMMENT '名称',
+  `merchant_no` varchar(45) DEFAULT NULL COMMENT '商户号',
+  `public_key` varchar(45) DEFAULT NULL COMMENT '对方提供的公钥',
+  `private_key` varchar(45) DEFAULT NULL COMMENT '自己的私钥',
+  `gate` varchar(45) DEFAULT NULL COMMENT '网关地址',
+  `status` varchar(45) DEFAULT NULL COMMENT '状态 0 开启 1 关闭',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='接入的支付商户';
+
+CREATE TABLE `payment_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `channel_id` varchar(45) DEFAULT NULL COMMENT '支付渠道',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `no` varchar(45) DEFAULT NULL COMMENT '订单号',
+  `create_time` timestamp NULL DEFAULT NULL COMMENT '订单提交时间',
+  `user_id` varchar(45) DEFAULT NULL COMMENT '充值人ID',
+  `status` varchar(45) DEFAULT '0' COMMENT '状态：0 用户发起充值  。已成功状态 1 三方异步通知支付成功 -》 2  人工审核到账成功  3 充值已到用户钱包',
+  `notify_time` varchar(45) DEFAULT NULL COMMENT '三方修改时间 ',
+  `check_time` varchar(45) DEFAULT NULL COMMENT '人工审核时间',
+  `bank_detail` varchar(45) DEFAULT NULL COMMENT '付款人信息',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='充值订单';
+
+CREATE TABLE `payment_order_bank_detail` (
+  `bank_id` varchar(45) DEFAULT NULL COMMENT '支持的银行卡ID',
+  `card` varchar(45) DEFAULT NULL COMMENT '银行卡账号',
+  `name` varchar(45) DEFAULT NULL COMMENT '付款人姓名',
+  KEY `unique_card` (`bank_id`,`card`,`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单付款人信息';
+
+CREATE TABLE `payment_support_bank` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bank` varchar(45) DEFAULT NULL COMMENT '银行',
+  `ico` varchar(45) DEFAULT NULL COMMENT '图标',
+  `status` varchar(45) DEFAULT '0' COMMENT '状态0 支持  1 不支持',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付支持银行卡';
+
+CREATE TABLE `recharge_channel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='供应商服务';
+
+CREATE TABLE `recharge_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `recharge_merchant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='供应商配置';
+
+CREATE TABLE `recharge_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `recharge_way` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `status` int(11) DEFAULT '0' COMMENT '0开启 1关闭',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='充值方式';
+
+CREATE TABLE `team_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `team_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `transfer_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `transfer_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `passwd` varchar(45) DEFAULT NULL,
+  `nick` varchar(45) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT NULL,
+  `balance` varchar(45) DEFAULT NULL COMMENT '钱包余额',
+  `status` varchar(45) DEFAULT NULL COMMENT '账号状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+
+CREATE TABLE `user_action` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `content` varchar(45) DEFAULT NULL,
+  `action` varchar(45) DEFAULT NULL,
+  `ip` varchar(45) DEFAULT NULL,
+  `device` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户行为';
+
+CREATE TABLE `user_bank` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL COMMENT '用户ID',
+  `bank` varchar(45) DEFAULT NULL COMMENT '银行',
+  `card` varchar(45) DEFAULT NULL COMMENT '银行卡号',
+  `name` varchar(45) DEFAULT NULL COMMENT '持卡人姓名',
+  `create_time` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户银行卡表';
+
+CREATE TABLE `wallet_limit` (
+  `id` int(11) NOT NULL,
+  `way` varchar(45) DEFAULT NULL COMMENT '限制方式',
+  `value` varchar(45) DEFAULT NULL COMMENT '限制值',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='系统级别提现设置';
+
+CREATE TABLE `wallet_limit_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `wallet_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作类型',
+  `user_id` varchar(45) DEFAULT NULL COMMENT '用户',
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  `money` varchar(45) DEFAULT NULL COMMENT '操作金额',
+  `create_time` timestamp NULL DEFAULT NULL COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='钱包成功的操作日志';
+
+CREATE TABLE `wallet_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';
+
+CREATE TABLE `wallet_series` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL COMMENT '用户账号',
+  `series` varchar(45) DEFAULT NULL COMMENT '钱包流水号',
+  `type` varchar(45) DEFAULT NULL COMMENT '1 充值 2 提现 3 转入游戏 4 转出游戏',
+  `status` varchar(45) DEFAULT NULL COMMENT '所处状态 0 处理中 1已用完',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `withdraw_limit_way` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL COMMENT '提现限制方式名',
+  `desc` varchar(45) DEFAULT NULL COMMENT '提现限制方式简介',
+  `time_type` varchar(45) DEFAULT NULL COMMENT '限制时间 0 永久 1 当日',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='提现限制方式';
+
+CREATE TABLE `withdraw_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='成功操作记录';
+
+CREATE TABLE `withdraw_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(45) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL COMMENT '操作：1充值 2提现 3转入游戏 4转出游戏 5活动入款',
+  `create_time` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL COMMENT '订单状态 0 处理中 1已结束',
+  `money` varchar(45) DEFAULT NULL COMMENT '金额',
+  `update_time` varchar(45) DEFAULT NULL,
+  `series` varchar(45) DEFAULT NULL COMMENT '订单号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='订单';

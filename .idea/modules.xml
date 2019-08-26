@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base-api/base-api.iml" filepath="$PROJECT_DIR$/base/base-api/base-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base-persistence/base-persistence.iml" filepath="$PROJECT_DIR$/base/base-persistence/base-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base-service/base-service.iml" filepath="$PROJECT_DIR$/base/base-service/base-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base-web/base-web.iml" filepath="$PROJECT_DIR$/base/base-web/base-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/business.iml" filepath="$PROJECT_DIR$/business/business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/business-api/business-api.iml" filepath="$PROJECT_DIR$/business/business-api/business-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/business-persistence/business-persistence.iml" filepath="$PROJECT_DIR$/business/business-persistence/business-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/business-service/business-service.iml" filepath="$PROJECT_DIR$/business/business-service/business-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/business/business-web/business-web.iml" filepath="$PROJECT_DIR$/business/business-web/business-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/event/event.iml" filepath="$PROJECT_DIR$/event/event.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job/job.iml" filepath="$PROJECT_DIR$/job/job.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job/job-api/job-api.iml" filepath="$PROJECT_DIR$/job/job-api/job-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job/job-persistence/job-persistence.iml" filepath="$PROJECT_DIR$/job/job-persistence/job-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job/job-service/job-service.iml" filepath="$PROJECT_DIR$/job/job-service/job-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job/job-web/job-web.iml" filepath="$PROJECT_DIR$/job/job-web/job-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/max.iml" filepath="$PROJECT_DIR$/max.iml" />
+      <module fileurl="file://$PROJECT_DIR$/money/money.iml" filepath="$PROJECT_DIR$/money/money.iml" />
+      <module fileurl="file://$PROJECT_DIR$/money/money-api/money-api.iml" filepath="$PROJECT_DIR$/money/money-api/money-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/money/money-persistence/money-persistence.iml" filepath="$PROJECT_DIR$/money/money-persistence/money-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/money/money-service/money-service.iml" filepath="$PROJECT_DIR$/money/money-service/money-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/money/money-web/money-web.iml" filepath="$PROJECT_DIR$/money/money-web/money-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supplier/supplier.iml" filepath="$PROJECT_DIR$/supplier/supplier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supplier/supplier-api/supplier-api.iml" filepath="$PROJECT_DIR$/supplier/supplier-api/supplier-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supplier/supplier-persistence/supplier-persistence.iml" filepath="$PROJECT_DIR$/supplier/supplier-persistence/supplier-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supplier/supplier-service/supplier-service.iml" filepath="$PROJECT_DIR$/supplier/supplier-service/supplier-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supplier/supplier-web/supplier-web.iml" filepath="$PROJECT_DIR$/supplier/supplier-web/supplier-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/wallet.iml" filepath="$PROJECT_DIR$/wallet/wallet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-api/wallet-api.iml" filepath="$PROJECT_DIR$/wallet/wallet-api/wallet-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-persistence/wallet-persistence.iml" filepath="$PROJECT_DIR$/wallet/wallet-persistence/wallet-persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-service/wallet-service.iml" filepath="$PROJECT_DIR$/wallet/wallet-service/wallet-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-web/wallet-web.iml" filepath="$PROJECT_DIR$/wallet/wallet-web/wallet-web.iml" />
+    </modules>
+  </component>
+</project>

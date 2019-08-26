@@ -1,0 +1,12 @@
+# Project exclude paths
+/base/base-api/target/
+/base/base-persistence/target/
+/base/base-service/target/
+/base/base-web/target/
+/business/business-api/target/
+/client/target/
+/core/target/
+/event/target/
+/job/job-api/target/
+/money/money-api/target/
+/supplier/supplier-api/target/

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wallet-web" />
+        <module name="supplier-service" />
+        <module name="wallet-persistence" />
+        <module name="client" />
+        <module name="supplier-api" />
+        <module name="money-web" />
+        <module name="base-web" />
+        <module name="supplier-persistence" />
+        <module name="wallet-service" />
+        <module name="supplier-web" />
+        <module name="money-persistence" />
+        <module name="money-service" />
+        <module name="base-api" />
+        <module name="server" />
+        <module name="job-api" />
+        <module name="base-service" />
+        <module name="wallet-api" />
+        <module name="base-persistence" />
+        <module name="job-web" />
+        <module name="business-persistence" />
+        <module name="business-web" />
+        <module name="business-service" />
+        <module name="money-api" />
+        <module name="job-service" />
+        <module name="job-persistence" />
+        <module name="business-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="base" target="1.8" />
+      <module name="base-api" target="1.8" />
+      <module name="base-persistence" target="1.8" />
+      <module name="base-service" target="1.8" />
+      <module name="base-web" target="1.8" />
+      <module name="business" target="1.8" />
+      <module name="business-api" target="1.8" />
+      <module name="business-persistence" target="1.8" />
+      <module name="business-service" target="1.8" />
+      <module name="business-web" target="1.8" />
+      <module name="client" target="1.8" />
+      <module name="core" target="8" />
+      <module name="event" target="1.8" />
+      <module name="job" target="1.8" />
+      <module name="job-api" target="1.8" />
+      <module name="job-persistence" target="1.8" />
+      <module name="job-service" target="1.8" />
+      <module name="job-web" target="1.8" />
+      <module name="max" target="1.8" />
+      <module name="money" target="1.8" />
+      <module name="money-api" target="1.8" />
+      <module name="money-persistence" target="1.8" />
+      <module name="money-service" target="1.8" />
+      <module name="money-web" target="1.8" />
+      <module name="server" target="1.8" />
+      <module name="supplier" target="1.8" />
+      <module name="supplier-api" target="1.8" />
+      <module name="supplier-persistence" target="1.8" />
+      <module name="supplier-service" target="1.8" />
+      <module name="supplier-web" target="1.8" />
+      <module name="wallet" target="1.8" />
+      <module name="wallet-api" target="1.8" />
+      <module name="wallet-persistence" target="1.8" />
+      <module name="wallet-service" target="1.8" />
+      <module name="wallet-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="PREFER_TARGET_JDK_COMPILER" value="false" />
+  </component>
+</project>
