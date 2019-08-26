@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GameController {
-
     @Autowired
     private RedisService redisService;
-
     @Autowired
     private TransferOrderService transferOrderService;
     @Autowired
@@ -25,8 +23,6 @@ public class GameController {
     private AppService appService;
     @Autowired
     private AppMaintainService appMaintainService;
-
-
     /*游戏视图*/
     @PostMapping("/game")
     public Result game() {
