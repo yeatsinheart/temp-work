@@ -11,6 +11,7 @@ public class UserDto implements Serializable {
     private String name;
     private String nick;
     private String passwd;
+    private String withdrawPasswd;
     private String token;
     private BigDecimal balance;
     private Integer status;

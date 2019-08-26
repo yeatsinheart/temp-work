@@ -63,6 +63,7 @@ public enum ResultCode {
     TRANSFER_AMOUNT_ERROR(20034,"转出钱包金额不足"),
     WITHDRAW_LIMIT(20034,"未满足提现条件"),
     MOBILE_ERROR(20035,"手机号格式错误"),
+    BIND_BANK_ERR(20035,"银行卡绑定失败"),
     RECHARGE_AMOUNT_ERROR(20036, "充值金额异常");
     private int code;
     private String message;

@@ -8,32 +8,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="wallet-web" />
         <module name="supplier-service" />
-        <module name="wallet-persistence" />
         <module name="client" />
-        <module name="supplier-api" />
+        <module name="base-api" />
         <module name="money-web" />
-        <module name="base-web" />
         <module name="supplier-persistence" />
-        <module name="wallet-service" />
+        <module name="job-service" />
         <module name="supplier-web" />
         <module name="money-persistence" />
         <module name="money-service" />
-        <module name="base-api" />
+        <module name="base-web" />
         <module name="server" />
-        <module name="job-api" />
+        <module name="business-api" />
         <module name="base-service" />
-        <module name="wallet-api" />
-        <module name="base-persistence" />
+        <module name="job-api" />
         <module name="job-web" />
         <module name="business-persistence" />
+        <module name="money-api" />
         <module name="business-web" />
         <module name="business-service" />
-        <module name="money-api" />
-        <module name="job-service" />
         <module name="job-persistence" />
-        <module name="business-api" />
+        <module name="base-persistence" />
+        <module name="supplier-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
@@ -73,8 +69,5 @@
       <module name="wallet-service" target="1.8" />
       <module name="wallet-web" target="1.8" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="PREFER_TARGET_JDK_COMPILER" value="false" />
   </component>
 </project>

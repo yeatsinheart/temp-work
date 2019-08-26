@@ -6,4 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class RechargeOrderDto implements Serializable {
+    private Integer userId;
+    private String series;
 }

@@ -1,4 +1,4 @@
-package com.max.client.controller;//package com.max.forehead.controller;
+//package com.max.client.controller;//package com.max.forehead.controller;
 //
 //import com.max.activity.service.ActivityOrderService;
 //import com.max.activity.service.ActivityService;
@@ -43,7 +43,7 @@ package com.max.client.controller;//package com.max.forehead.controller;
 //    }
 //    /*额度转入游戏*/
 //    @PostMapping("/transferin")
-//    public GameDto transferin(GameDto game){
+//    public Result transferin(GameDto game){
 //        //事务：比较钱包余额足够，扣除钱包余额，生成游戏转入单
 //        //事务：转入失败，返回钱包余额
 //        //事务：转入成功，记录钱包增减日志
@@ -51,7 +51,7 @@ package com.max.client.controller;//package com.max.forehead.controller;
 //    }
 //    /*额度转出游戏*/
 //    @PostMapping("/transferout")
-//    public GameDto transferout(GameDto game){
+//    public Result transferout(GameDto game){
 //        //事务：比较游戏余额足够，生成游戏转出单，发起游戏余额转出
 //        //事务：转出失败
 //        //事务：转出成功，记录钱包增减日志，钱包增加相应额度
@@ -59,7 +59,7 @@ package com.max.client.controller;//package com.max.forehead.controller;
 //    }
 //    /*进入游戏*/
 //    @PostMapping("/enter")
-//    public GameDto enter(GameDto game){
+//    public Result enter(GameDto game){
 //        //用户是否有效
 //        //创建游戏账号
 //        //额度转入游戏
@@ -68,7 +68,7 @@ package com.max.client.controller;//package com.max.forehead.controller;
 //    }
 //    /*查看投注情况*/
 //    @PostMapping("/gamerecord")
-//    public GameDto gamerecord(GameDto recordPage){
+//    public Result gamerecord(GameDto recordPage){
 //        //用户是否有效
 //        //获取筛选的投注记录。最大一个月
 //        String ip = IpUtil.getIpAddr();return null;

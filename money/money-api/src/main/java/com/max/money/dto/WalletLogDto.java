@@ -5,5 +5,5 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class WalleteRcordDto implements Serializable {
+public class WalletLogDto implements Serializable {
 }

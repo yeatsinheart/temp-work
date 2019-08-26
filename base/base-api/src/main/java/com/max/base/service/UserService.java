@@ -6,4 +6,6 @@ public interface UserService  {
     UserDto login(UserDto login);
 
     UserDto signin(UserDto request);
+
+    UserDto getBalance(UserDto user);
 }

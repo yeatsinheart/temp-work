@@ -9,6 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
         "com.max.client",
         "com.max.base",
         "com.max.core",
+        "com.max.money",
+        "com.max.business",
         "com.max.event"})
 public class ClientApplication {
     public static void main(String[] args) {

@@ -15,4 +15,9 @@ public class UserServiceImpl implements UserService {
     public UserDto signin(UserDto request) {
         return null;
     }
+
+    @Override
+    public UserDto getBalance(UserDto user) {
+        return null;
+    }
 }

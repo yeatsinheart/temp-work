@@ -32,11 +32,6 @@
       <module fileurl="file://$PROJECT_DIR$/supplier/supplier-persistence/supplier-persistence.iml" filepath="$PROJECT_DIR$/supplier/supplier-persistence/supplier-persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/supplier/supplier-service/supplier-service.iml" filepath="$PROJECT_DIR$/supplier/supplier-service/supplier-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/supplier/supplier-web/supplier-web.iml" filepath="$PROJECT_DIR$/supplier/supplier-web/supplier-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wallet/wallet.iml" filepath="$PROJECT_DIR$/wallet/wallet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-api/wallet-api.iml" filepath="$PROJECT_DIR$/wallet/wallet-api/wallet-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-persistence/wallet-persistence.iml" filepath="$PROJECT_DIR$/wallet/wallet-persistence/wallet-persistence.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-service/wallet-service.iml" filepath="$PROJECT_DIR$/wallet/wallet-service/wallet-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wallet/wallet-web/wallet-web.iml" filepath="$PROJECT_DIR$/wallet/wallet-web/wallet-web.iml" />
     </modules>
   </component>
 </project>

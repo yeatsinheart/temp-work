@@ -6,4 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class WithdrawOrderDto implements Serializable {
+    private Integer userId;
+    private String series;
 }

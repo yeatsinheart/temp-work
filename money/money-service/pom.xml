@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <version>1.0.0</version>
     <artifactId>money-service</artifactId>
 <dependencies>
         <dependency>
@@ -21,5 +21,11 @@
             <artifactId>money-persistence</artifactId>
             <version>1.0.0</version>
         </dependency>
-    </dependencies>
+    <dependency>
+        <groupId>com.max</groupId>
+        <artifactId>core</artifactId>
+        <version>1.0.0</version>
+        <scope>compile</scope>
+    </dependency>
+</dependencies>
 </project>
