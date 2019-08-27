@@ -7,6 +7,7 @@ import com.max.core.redis.impl.RedisKeyHelper;
 import com.max.core.result.Result;
 import com.max.core.result.ResultCode;
 import com.max.core.result.ResultGenerator;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,39 +20,64 @@ public class ValidateController {
     @Autowired
     private RedisService redisService;
 
-    @PostMapping("/login/validate")
+    @ApiOperation(value = "/login/code", tags = {"账号密码登录：网页验证码"})
+    @PostMapping("/login/code")
     public Result login(LoginUserRequest login) {
         String code = "1234";
         redisService.set(RedisKeyHelper.USER_LOGIN_CODE + login.getName(), code, UserConstant.VALIDATE_REDIS_KEEP_TIME);
         return ResultGenerator.genSuccessResult(code);
     }
 
-    @PostMapping("/login/phone/validate")
-    public Result loginphone(LoginUserRequest login) {
-        String loginCodeInRedis = redisService.getResult(RedisKeyHelper.USER_PHONE_LOGIN_CODE + login.getName(), String.class).getResult();
-        if (StringUtils.isNotBlank(loginCodeInRedis)) {
-            return ResultGenerator.genFailResult(ResultCode.PHONE_VALIDATAE_CODE_SENDED.getCode(), ResultCode.PHONE_VALIDATAE_CODE_SENDED.getMessage());
+    @ApiOperation(value = "/login/phone/code", tags = {"手机短信登录：网页验证码"})
+    @PostMapping("/login/phone/code")
+    public Result loginphone(LoginUserRequest login, String code) {
+        //网页验证码
+        String pageCode = redisService.getResult(RedisKeyHelper.USER_LOGIN_CODE + login.getName(), String.class).getResult();
+        if (StringUtils.isEmpty(pageCode)) {
+            return ResultGenerator.genFailResult(ResultCode.VALIDATAE_CODE_EXPIRED);
         }
-        String code = "1234";
-        redisService.set(RedisKeyHelper.USER_PHONE_LOGIN_CODE + login.getName(), code, UserConstant.VALIDATE_REDIS_KEEP_TIME);
-        return ResultGenerator.genSuccessResult(code);
+        //短信验证码
+        if (StringUtils.isNotBlank(code) && code.equals(pageCode)) {
+            String phoneCode = redisService.getResult(RedisKeyHelper.USER_PHONE_LOGIN_CODE + login.getName(), String.class).getResult();
+            if (StringUtils.isNotBlank(phoneCode)) {
+                return ResultGenerator.genFailResult(ResultCode.PHONE_VALIDATAE_CODE_SENDED);
+            }
+            String phone = "1234";
+            redisService.set(RedisKeyHelper.USER_PHONE_LOGIN_CODE + login.getName(), phone, UserConstant.VALIDATE_REDIS_KEEP_TIME);
+            return ResultGenerator.genSuccessResult(code);
+        } else {
+            return ResultGenerator.genFailResult(ResultCode.INVALID_SMS_CODE);
+        }
+
     }
 
-    @PostMapping("/signin/validate")
+
+    @ApiOperation(value = "/signin/code", tags = {"账号注册：网页验证码"})
+    @PostMapping("/signin/code")
     public Result signin(LoginUserRequest login) {
         String code = "1234";
         redisService.set(RedisKeyHelper.USER_SIGNIN_CODE + login.getName(), code, UserConstant.VALIDATE_REDIS_KEEP_TIME);
         return ResultGenerator.genSuccessResult(code);
     }
 
-    @PostMapping("/signin/phone/validate")
-    public Result signinphone(LoginUserRequest login) {
-        String loginCodeInRedis = redisService.getResult(RedisKeyHelper.USER_PHONE_SIGNIN_CODE + login.getName(), String.class).getResult();
-        if (StringUtils.isNotBlank(loginCodeInRedis)) {
-            return ResultGenerator.genFailResult(ResultCode.PHONE_VALIDATAE_CODE_SENDED.getCode(), ResultCode.PHONE_VALIDATAE_CODE_SENDED.getMessage());
+    @ApiOperation(value = "/signin/phone/code", tags = {"账号注册：短信验证码"})
+    @PostMapping("/signin/phone/code")
+    public Result signinphone(LoginUserRequest login, String code) {
+        //网页验证码
+        String pageCode = redisService.getResult(RedisKeyHelper.USER_SIGNIN_CODE + login.getName(), String.class).getResult();
+        if (StringUtils.isEmpty(pageCode)) {
+            return ResultGenerator.genFailResult(ResultCode.VALIDATAE_CODE_EXPIRED);
         }
-        String code = "1234";
-        redisService.set(RedisKeyHelper.USER_PHONE_SIGNIN_CODE + login.getName(), code, UserConstant.VALIDATE_REDIS_KEEP_TIME);
-        return ResultGenerator.genSuccessResult(code);
+        //短信验证码
+        if (StringUtils.isNotBlank(code) && code.equals(pageCode)) {
+            String phoneCode = redisService.getResult(RedisKeyHelper.USER_PHONE_SIGNIN_CODE + login.getName(), String.class).getResult();
+            if (StringUtils.isNotBlank(phoneCode)) {
+                return ResultGenerator.genFailResult(ResultCode.PHONE_VALIDATAE_CODE_SENDED);
+            }
+            String phone = "1234";
+            redisService.set(RedisKeyHelper.USER_PHONE_SIGNIN_CODE + login.getName(), phone, UserConstant.VALIDATE_REDIS_KEEP_TIME);
+            return ResultGenerator.genSuccessResult(code);
+        }
+        return ResultGenerator.genFailResult(ResultCode.INVALID_SMS_CODE);
     }
 }

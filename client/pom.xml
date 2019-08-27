@@ -18,49 +18,46 @@
             <groupId>com.max</groupId>
             <artifactId>core</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>base-api</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>base-service</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>event</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
+
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>business-api</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
+
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>business-service</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
+
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>money-api</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
+
         </dependency>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>money-service</artifactId>
             <version>1.0.0</version>
-            <scope>compile</scope>
+
         </dependency>
     </dependencies>
 </project>

@@ -11,11 +11,5 @@ public class UserResponse implements Serializable {
     private Integer userId;
     private String nick;
     private BigDecimal balance;
-    public static UserResponse getResponse(UserDto user){
-        UserResponse response = new UserResponse();
-        response.setUserId(user.getId());
-        response.setNick(user.getNick());
-        response.setBalance(user.getBalance());
-        return response;
-    }
+
 }

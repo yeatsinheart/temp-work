@@ -12,11 +12,5 @@ public class SigninUserRequest implements Serializable {
     private String passwd;
 
     private String ip = IpUtil.getIpAddr();
-    public UserDto getUserDto(){
-        UserDto user = new UserDto();
-        user.setName(this.getName());
-        user.setPasswd(this.getPasswd());
-        user.setNick(RandomName.randomName(false,4));
-        return user;
-    }
+
 }

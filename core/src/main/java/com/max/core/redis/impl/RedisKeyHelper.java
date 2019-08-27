@@ -12,6 +12,7 @@ public class RedisKeyHelper {
     public static final String USER_SIGNIN_CODE = "USER_SIGNIN_CODE_";
     public static final String USER_LOGIN_CODE = "USER_LOGIN_CODE_";
     public static final String USER_PHONE_LOGIN_CODE = "USER_PHONE_LOGIN_CODE_";
+    public static final String USER_PHONE_SIGNIN_BEFORE_CODE = "USER_PHONE_SIGNIN_BEFORE_CODE_";
     public static final String USER_PHONE_SIGNIN_CODE = "USER_PHONE_SIGNIN_CODE_";
     public static final String TOKEN_ONLINE = "TOKEN_ONLINE_";
     public static final String USER_ONLINE = "USER_ONLINE_";

@@ -10,11 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>base-persistence</artifactId>
-<dependencies>
+    <dependencies>
         <dependency>
             <groupId>com.max</groupId>
             <artifactId>base-api</artifactId>
             <version>1.0.0</version>
         </dependency>
+
     </dependencies>
 </project>

@@ -19,6 +19,7 @@ public enum ResultCode {
     USER_NAME_EXIST(20001, "用户名已存在"),
     VALIDATAE_CODE_ERROR(20002, "获取验证码失败"),
     PHONE_VALIDATAE_CODE_SENDED(20002, "验证码已发送到手机，请"+ UserConstant.VALIDATE_REDIS_KEEP_TIME +"秒后重试"),
+    VALIDATAE_CODE_SENDED(20002, "验证码已发送，请"+ UserConstant.VALIDATE_REDIS_KEEP_TIME +"秒后重试"),
     VALIDATAE_CODE_EXPIRED(20002, "验证码已过期"),
     USER_NAME_NOT_EXIST(20003, "用户名不存在"),
     PASSWOWRD_WRONG(20004, "用户密码错误"),

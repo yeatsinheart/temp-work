@@ -17,8 +17,8 @@ public class GameController {
     private RedisService redisService;
     @Autowired
     private TransferOrderService transferOrderService;
-    @Autowired
-    private GameViewService gameViewrService;
+    //@Autowired
+    //private GameViewService gameViewrService;
     @Autowired
     private AppService appService;
     @Autowired
