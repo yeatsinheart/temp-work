@@ -48,6 +48,12 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public UserDto signin(UserDto request) {
+        QueryWrapper<User> selectByName = new QueryWrapper<User>();
+        selectByName.eq("name", request.getName());
+        List<User> exist = userMapper.selectList(selectByName);
+        if(!CollectionUtils.isEmpty(exist)){
+            throw new ServiceException(ResultCode.USER_NAME_EXIST);
+        }
         User user = new User();
         user.setName(request.getName());
         user.setPasswd(request.getPasswd());
@@ -57,8 +63,6 @@ public class UserServiceImpl  implements UserService {
         user.setStatus(0);
         int insetNum = userMapper.insert(user);
         if(insetNum==1){
-            QueryWrapper<User> selectByName = new QueryWrapper<User>();
-            selectByName.eq("name", request.getName());
             user = userMapper.selectOne(selectByName);
             UserDto userResponse = new UserDto();
             userResponse.setId(user.getId());
