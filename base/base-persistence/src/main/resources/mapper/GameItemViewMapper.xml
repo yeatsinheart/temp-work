@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.max.base.mapper.GameItemViewMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="GameItemViewResultMap" type="com.max.base.entity.GameItemView">
+        <id column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="name" property="name" />
+        <result column="img" property="img" />
+        <result column="mark" property="mark" />
+        <result column="status" property="status" />
+        <result column="deleted" property="deleted" />
+        <result column="disable_start_time" property="disableStartTime" />
+        <result column="disable_end_time" property="disableEndTime" />
+        <result column="content" property="content" />
+        <result column="group_id" property="groupId" />
+    </resultMap>
+    <resultMap id="GameItemViewDtoResultMap" type="com.max.base.dto.GameItemViewDto">
+                <id column="id" property="id" />
+                <result column="type" property="type" />
+                <result column="name" property="name" />
+                <result column="img" property="img" />
+                <result column="mark" property="mark" />
+                <result column="status" property="status" />
+                <result column="deleted" property="deleted" />
+                <result column="disable_start_time" property="disableStartTime" />
+                <result column="disable_end_time" property="disableEndTime" />
+                <result column="content" property="content" />
+                <result column="group_id" property="groupId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, type, name, img, mark, status, deleted, disable_start_time, disable_end_time, content, group_id
+    </sql>
+
+</mapper>

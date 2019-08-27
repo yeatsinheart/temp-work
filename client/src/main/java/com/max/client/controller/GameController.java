@@ -1,15 +1,20 @@
 package com.max.client.controller;
 import com.max.base.dto.GameDto;
+import com.max.base.dto.GameItemViewDto;
 import com.max.base.service.AppMaintainService;
 import com.max.base.service.AppService;
+import com.max.base.service.GameItemViewService;
 import com.max.base.service.GameViewService;
 import com.max.core.redis.RedisService;
 import com.max.core.result.Result;
 import com.max.core.result.ResultGenerator;
 import com.max.money.service.TransferOrderService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class GameController {
@@ -20,14 +25,16 @@ public class GameController {
     //@Autowired
     //private GameViewService gameViewrService;
     @Autowired
+    private GameItemViewService gameItemViewrService;
+    @Autowired
     private AppService appService;
     @Autowired
     private AppMaintainService appMaintainService;
-    /*游戏视图*/
+    @ApiOperation(value = "/game", tags = {"游戏视图"})
     @PostMapping("/game")
     public Result game() {
-        //平台：维护，分类：顺序 游戏：顺序，维护
-        return ResultGenerator.genSuccessResult();
+       List<GameItemViewDto> viewDtos =  gameItemViewrService.game();
+        return ResultGenerator.genSuccessResult(viewDtos);
     }
 
     /*额度转入游戏*/

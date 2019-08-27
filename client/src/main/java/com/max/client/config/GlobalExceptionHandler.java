@@ -29,7 +29,12 @@ public class GlobalExceptionHandler {
         log.warn("数据已存在{}",e.getMessage());
         return ResultGenerator.genFailResult(ResultCode.INVALID_PARAM);
     }
-
+    @ExceptionHandler()
+    @ResponseBody
+    Result handleBindException(NumberFormatException e){
+        log.warn("数值转换异常{}",e.getMessage());
+        return ResultGenerator.genFailResult(ResultCode.INVALID_PARAM);
+    }
     @ExceptionHandler()
     @ResponseBody
     Result handleServiceException(ServiceException e){

@@ -12,6 +12,7 @@ import com.max.core.result.ResultCode;
 import com.max.core.result.ResultGenerator;
 import com.max.money.dto.WalletSeriesDto;
 import com.max.money.dto.WithdrawOrderDto;
+import com.max.money.service.WalletOrderService;
 import com.max.money.service.WalletSeriesService;
 import com.max.money.service.WithdrawOrderService;
 import io.swagger.annotations.ApiOperation;
@@ -26,9 +27,7 @@ public class WithdrawController {
     @Autowired
     private RedisService redisService;
     @Autowired
-    private WalletSeriesService walletSeriesService;
-    @Autowired
-    private WithdrawOrderService withdrawOrderService;
+    private WalletOrderService walletOrderService;
     @Autowired
     private UserBankService userBankService;
     @Autowired
@@ -53,15 +52,13 @@ public class WithdrawController {
             return ResultGenerator.genFailResult(ResultCode.NO_USER_BANK);
         }
         //新建钱包，如果有有则通过，无则创建  获取账户可用提现订单号
-        WalletSeriesDto series = walletSeriesService.getWithdrawSeries(user);
         //绑定银行卡 有则通过，无则提示创建银行卡
         //校验提现约束
         boolean pass = withdrawLimitService.passLimited(user);
         if (pass) {
             withdrawOrder.setUserId(user.getId());
-            withdrawOrder.setSeries(series.getSeries());
             //扣钱生成提现订单
-            WithdrawOrderDto withdrawOrderDto = withdrawOrderService.withdraw(withdrawOrder);
+            WithdrawOrderDto withdrawOrderDto = walletOrderService.withdraw(withdrawOrder);
             return ResultGenerator.genSuccessResult(withdrawOrderDto);
         }
         return ResultGenerator.genFailResult(ResultCode.WITHDRAW_LIMIT);
